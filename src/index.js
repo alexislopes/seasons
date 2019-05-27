@@ -10,8 +10,7 @@ class App extends React.Component {
         console.log('my component was just updated')
     }
 
-    // React says we have to define render!!
-    render () {
+    renderContent() {
         console.log('rendering')
        if (this.state.errorMessage && !this.state.lat){
            return <div>Error: {this.state.errorMessage}</div>
@@ -21,7 +20,16 @@ class App extends React.Component {
            return <SeasonDisplay lat={this.state.lat}/>
        }
 
-       return <Spinner />
+       return <Spinner message="please, accept location request"/>
+    }
+
+    // React says we have to define render!!
+    render () {
+        return (
+            <div className="border red">
+                {this.renderContent()}
+            </div>
+        );
     }
 
     componentDidMount() {
